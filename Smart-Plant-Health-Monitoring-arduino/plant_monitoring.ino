@@ -5,7 +5,7 @@
 
 // ---------- WIFI DETAILS ----------
 const char* ssid = WIFI_SSID;
-const char* password = "WIFI_PASSWORD";
+const char* password = WIFI_PASSWORD;
 
 // ---------- FLASK SERVER ----------
 const char* serverUrl = "http://YOUR_SERVER_IP:5000/sensor-data";
