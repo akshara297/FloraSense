@@ -22,4 +22,4 @@ backend/.florasense_secret
 .DS_Store
 Thumbs.db
 
-Smart-Plant-Health-Monitoring-arduino/secrets.h
+Smart-Plant-Health-Monitoring-arduino/plant_monitoring/secrets.h

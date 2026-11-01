@@ -2,7 +2,7 @@
 (() => {
   "use strict";
 
-  const BASE_URL = "http://127.0.0.1:5000";
+  const BASE_URL = "";
   const SENSOR_URL = `${BASE_URL}/sensor-data?limit=1`;
   const ALERTS_URL = `${BASE_URL}/alerts`;
   const SUMMARY_URL = `${BASE_URL}/alerts/summary`;
@@ -96,8 +96,6 @@
 
     select.value = "tulsi";
     select.disabled = true;
-
-    localStorage.setItem("floraSenseSelectedPlant", "tulsi");
   }
 
   function setupThresholds() {

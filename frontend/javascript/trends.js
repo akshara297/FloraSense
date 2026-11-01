@@ -1,6 +1,6 @@
 (() => {
   "use strict";
-  const API_URL = "http://127.0.0.1:5000/sensor-data?limit=2000";
+  const API_URL = "/sensor-data?limit=2000";
   const cards = [...document.querySelectorAll("[data-chart]")];
   const note = document.getElementById("period-note");
   const select = document.getElementById("plant-select");

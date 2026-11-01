@@ -2,7 +2,7 @@
    information/care UI and replaces only the sensor-reading renderer. */
 (() => {
   "use strict";
-  const API_URL = "http://127.0.0.1:5000/sensor-data?limit=1";
+  const API_URL = "/sensor-data?limit=1";
   const sensors = [
     { key: "soil", name: "Soil Moisture", unit: "%", convert: v => clamp((3295 - v) / (3295 - 1936) * 100, 0, 100) },
     { key: "temperature", name: "Temperature", unit: "°C", convert: v => v },

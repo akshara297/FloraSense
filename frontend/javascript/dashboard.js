@@ -1,5 +1,5 @@
 
-const API_URL = "http://127.0.0.1:5000/sensor-data";
+const API_URL = "/sensor-data";
 
 // Convert a value into a percentage between 0 and 100
 function clamp(value) {
