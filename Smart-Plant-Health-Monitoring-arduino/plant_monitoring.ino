@@ -118,6 +118,7 @@ void loop() {
 
     http.begin(serverUrl);
     http.addHeader("Content-Type", "application/json");
+    http.addHeader("X-API-Key", SENSOR_API_KEY);
     http.setTimeout(5000);
 
     int responseCode = http.POST(jsonData);

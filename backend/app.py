@@ -1,4 +1,3 @@
-
 from flask import Flask, request, jsonify, session, redirect, send_from_directory
 from pathlib import Path
 from datetime import datetime, timedelta
@@ -9,6 +8,7 @@ import math
 import os
 import secrets
 import re
+import hmac
 
 app = Flask(__name__)
 
@@ -27,10 +27,12 @@ else:
     app.secret_key = SECRET_FILE.read_text().strip()
 
 app.config.update(
-    SESSION_COOKIE_HTTPONLY=True,
-    SESSION_COOKIE_SAMESITE="Lax",
-    SESSION_COOKIE_SECURE=os.environ.get("SESSION_COOKIE_SECURE", "false").lower() == "true",  
-    PERMANENT_SESSION_LIFETIME=timedelta(days=30)
+   SESSION_COOKIE_HTTPONLY=True,
+SESSION_COOKIE_SAMESITE="Lax",
+SESSION_COOKIE_SECURE=(
+    os.environ.get("SESSION_COOKIE_SECURE", "false").lower() == "true"
+),
+PERMANENT_SESSION_LIFETIME=timedelta(days=30)
 )
 
 
@@ -399,7 +401,19 @@ def process_alerts(reading):
                 """, (timestamp, sensor))
 
 
-# ---------------- EXISTING SENSOR APIs ----------------
+# ---------------- SENSOR API SECURITY ----------------
+
+def sensor_api_authorized():
+    expected_key = os.environ.get("FLORASENSE_SENSOR_API_KEY")
+    supplied_key = request.headers.get("X-API-Key", "")
+
+    return (
+        bool(expected_key)
+        and hmac.compare_digest(supplied_key, expected_key)
+    )
+
+
+# ---------------- SENSOR APIs ----------------
 
 @app.route("/health", methods=["GET"])
 def health():
@@ -408,6 +422,10 @@ def health():
 
 @app.route("/sensor-data", methods=["POST"])
 def receive_sensor_data():
+
+    if not sensor_api_authorized():
+        return jsonify({"error": "Unauthorized request."}), 401
+
     data = request.get_json(silent=True)
 
     if not isinstance(data, dict):
@@ -450,6 +468,10 @@ def receive_sensor_data():
 
 @app.route("/sensor-data", methods=["GET"])
 def get_sensor_data():
+
+    if not get_logged_in_user():
+        return jsonify({"error": "Authentication required."}), 401
+
     try:
         limit = int(request.args.get("limit", 500))
     except ValueError:
@@ -467,10 +489,14 @@ def get_sensor_data():
     return jsonify([dict(row) for row in rows])
 
 
-# ---------------- EXISTING ALERT APIs ----------------
+# ---------------- ALERT APIs ----------------
 
 @app.route("/alerts", methods=["GET"])
 def get_alerts():
+
+    if not get_logged_in_user():
+        return jsonify({"error": "Authentication required."}), 401
+
     status = request.args.get("status", "all")
     severity = request.args.get("severity", "all")
 
@@ -495,6 +521,10 @@ def get_alerts():
 
 @app.route("/alerts/summary", methods=["GET"])
 def alert_summary():
+
+    if not get_logged_in_user():
+        return jsonify({"error": "Authentication required."}), 401
+
     with get_connection() as conn:
         rows = conn.execute("""
             SELECT
@@ -517,6 +547,7 @@ def alert_summary():
 
 @app.before_request
 def protect_pages():
+
     if request.path.startswith("/pages/"):
         if not get_logged_in_user():
             session.clear()
@@ -529,6 +560,7 @@ def protect_pages():
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def serve_frontend(path):
+
     requested_file = path or "index.html"
 
     safe_path = safe_join(str(FRONTEND_DIR), requested_file)
@@ -540,6 +572,9 @@ def serve_frontend(path):
 
 
 # ---------------- START SERVER ----------------
+init_db()
+
+# Initialize database when Flask/Gunicorn imports this module
 init_db()
 
 if __name__ == "__main__":
