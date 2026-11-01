@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In | FloraSense</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Edu+QLD+Hand:wght@700&family=Fredoka:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <main class="login-page">
+
+        <section class="branding-panel" aria-label="FloraSense plant care">
+            <div class="branding-content">
+
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 48 48">
+                        <path d="M24 39V23m0 8C13 31 9 23 10 14c9 0 14 5 14 14m0-6c0-9 6-14 15-14-1 9-6 14-15 14"/>
+                    </svg>
+                </span>
+
+                <h1>FloraSense</h1>
+                <p class="brand-tagline">Smart plant care for a greener tomorrow.</p>
+
+                <span class="brand-divider" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 21V11m0 6C6 17 4 13 4 8c5 0 8 3 8 8m0-3c0-5 3-8 8-8 0 5-3 8-8 8"/>
+                    </svg>
+                </span>
+
+                <p class="brand-note">Healthy plants, happier days.</p>
+            </div>
+        </section>
+
+        <section class="login-panel" aria-label="Account access">
+            <div class="login-card-wrap">
+
+                <div class="login-card">
+
+                    <!-- LOGIN FORM -->
+                    <div id="login-view">
+                        <h2>Welcome Back</h2>
+                        <p>Please log in to continue your plant care journey with FloraSense.</p>
+
+                        <form id="login-form">
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    autocomplete="username"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    autocomplete="current-password"
+                                    required
+                                >
+                            </div>
+
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+
+                            <button type="submit">Login</button>
+                        </form>
+
+                        <p class="auth-switch">
+                            Don't have an account?
+                            <button type="button" id="show-signup">Sign Up</button>
+                        </p>
+                    </div>
+
+
+                    <!-- SIGNUP FORM -->
+                    <div id="signup-view" hidden>
+                        <h2>Create Account</h2>
+                        <p>Join FloraSense and start your plant care journey.</p>
+
+                        <form id="signup-form">
+
+                            <div class="form-group">
+                                <label for="signup-name">Full Name</label>
+                                <input
+                                    type="text"
+                                    id="signup-name"
+                                    name="name"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    maxlength="100"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signup-username">Username</label>
+                                <input
+                                    type="text"
+                                    id="signup-username"
+                                    name="username"
+                                    placeholder="Choose a username"
+                                    autocomplete="username"
+                                    minlength="3"
+                                    maxlength="30"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signup-email">Email</label>
+                                <input
+                                    type="email"
+                                    id="signup-email"
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    autocomplete="email"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signup-password">Password</label>
+                                <input
+                                    type="password"
+                                    id="signup-password"
+                                    name="password"
+                                    placeholder="Create a password (min. 8 characters)"
+                                    autocomplete="new-password"
+                                    minlength="8"
+                                    maxlength="128"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirm-signup-password">Confirm Password</label>
+                                <input
+                                    type="password"
+                                    id="confirm-signup-password"
+                                    name="confirm-password"
+                                    placeholder="Enter password again"
+                                    autocomplete="new-password"
+                                    required
+                                >
+                            </div>
+
+                            <button type="submit">Create Account</button>
+                        </form>
+
+                        <p class="auth-switch">
+                            Already have an account?
+                            <button type="button" id="show-login">Login</button>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="login-feedback" id="login-feedback" role="status" aria-live="polite"></p>
+            <p class="login-feedback" id="signup-feedback" role="status" aria-live="polite"></p>
+
+        </section>
+    </main>
+
+    <script src="javascript/auth.js" defer></script>
+</body>
+</html>

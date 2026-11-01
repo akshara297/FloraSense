@@ -1,0 +1,54 @@
+.trends-main { min-height: 100vh; padding-top: clamp(20px, 4vw, 56px); }
+.trends-header { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:20px 24px; border:1px solid rgba(104,145,94,.24); border-radius:25px; background:rgba(255,249,233,.96); box-shadow:0 10px 25px rgba(39,51,41,.16); }
+.trends-title { display:flex; align-items:center; gap:16px; min-width:260px; }
+.trends-title-icon { display:grid; place-items:center; flex:none; width:58px; height:58px; border-radius:19px; background:#DCEBCB; color:#28633D; }
+.trends-title-icon svg { width:34px; height:34px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.trends-title h1 { color:#111; font-weight:600; }
+.trends-title p { margin:5px 0 0; color:#4f584c; font-size:14px; }
+.trend-controls { display:flex; align-items:center; justify-content:flex-end; gap:20px; }
+.plant-control { display:flex; align-items:center; gap:10px; }
+.plant-control-image { display:block; width:52px; height:52px; flex:none; border:1px solid rgba(68,90,60,.18); border-radius:15px; background:#E9F0DD; object-fit:cover; }
+.plant-control > span:last-child { display:grid; gap:4px; }
+.plant-control small,.period-control legend { color:#4f584c; font-size:10px; font-weight:600; letter-spacing:.55px; }
+.plant-control select { width:170px; max-width:none; padding:9px 12px; border:1px solid rgba(68,90,60,.18); border-radius:13px; background:#fffdf5; font-size:15px; }
+.period-control { min-width:0; margin:0; padding:0; border:0; }
+.period-control legend { margin-bottom:5px; }
+.period-buttons { display:flex; gap:5px; }
+.period-buttons button { min-height:40px; padding:0 13px; border:1px solid rgba(68,90,60,.17); border-radius:20px; background:rgba(255,253,245,.85); color:var(--ink); font:500 13px "Fredoka","Comic Sans MS",sans-serif; cursor:pointer; white-space:nowrap; }
+.period-buttons button[aria-pressed="true"] { border-color:#285d3e; background:#285d3e; color:#fff; }
+.period-buttons button:hover { border-color:#68915e; }
+.period-buttons button:focus-visible,.plant-control select:focus-visible { outline:3px solid #D9C295; outline-offset:2px; }
+.trends-meta { display:flex; align-items:center; gap:12px; margin:13px 3px 10px; color:#53604f; font-size:11px; }
+.sample-label { display:inline-block; padding:5px 9px; border-radius:20px; background:rgba(255,253,240,.9); color:#52644a; font-size:10px; }
+.chart-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.trend-card { --accent:#28743b; --tint:#e9f1dc; min-width:0; padding:17px 19px 15px; border:1px solid rgba(104,145,94,.25); border-radius:21px; background:rgba(255,249,233,.96); box-shadow:0 5px 16px rgba(39,51,41,.1); }
+.temperature-card { --accent:#df4b19; --tint:#fbe8d8; border-color:rgba(199,125,74,.28); background:rgba(255,247,235,.97); }
+.humidity-card { --accent:#1386c4; --tint:#e3f0ed; border-color:rgba(104,145,94,.25); background:rgba(248,250,239,.97); }
+.light-card { --accent:#e99b00; --tint:#fbf0cd; border-color:rgba(197,148,46,.28); background:rgba(255,250,235,.97); }
+.chart-heading { display:flex; align-items:center; gap:12px; }
+.chart-icon { display:grid; width:48px; height:48px; flex:none; place-items:center; border-radius:16px; background:var(--tint); color:var(--accent); }
+.chart-icon svg { width:29px; height:29px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.chart-heading h2 { margin:0; font:600 18px "Edu QLD Hand","Fredoka","Comic Sans MS",sans-serif; }
+.chart-heading p { margin:3px 0 0; color:#5e655a; font-size:11px; }
+.chart-slot { height:184px; margin:3px -3px 4px; }
+.trend-svg { display:block; width:100%; height:100%; overflow:visible; }
+.trend-svg text { fill:#5b625b; font:10px "Fredoka","Comic Sans MS",sans-serif; }
+.trend-svg .axis-title { fill:#374239; font-size:10px; }
+.trend-svg .gridline { stroke:rgba(68,90,60,.11); stroke-width:1; }
+.trend-svg .axisline { stroke:rgba(68,90,60,.25); stroke-width:1; }
+.trend-svg .area { fill:var(--accent); opacity:.12; }
+.trend-svg .line { fill:none; stroke:var(--accent); stroke-width:2.3; stroke-linecap:round; stroke-linejoin:round; }
+.trend-svg .point { fill:var(--accent); stroke:#fff9e9; stroke-width:1.5; cursor:crosshair; }
+.trend-svg .point:focus { stroke:#273329; stroke-width:2.5; outline:none; }
+.stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:4px; padding:10px 5px; border-radius:13px; background:var(--tint); }
+.stat { display:grid; justify-items:center; gap:2px; min-width:0; text-align:center; }
+.stat span { color:#525b50; font-size:10px; }
+.stat strong { color:#111; font-size:17px; font-weight:500; white-space:nowrap; }
+.empty-chart { display:grid; height:100%; place-items:center; padding:20px; color:#596355; font-size:13px; text-align:center; }
+.no-plant-data { grid-column:1/-1; padding:40px 20px; border:1px dashed rgba(68,90,60,.35); border-radius:18px; background:rgba(255,249,233,.92); color:#495649; text-align:center; }
+.no-plant-data strong { display:block; margin-bottom:6px; color:var(--ink); font-size:17px; }
+@media(max-width:1150px) { .trends-header { align-items:flex-start; flex-direction:column; } .trend-controls { width:100%; justify-content:space-between; } }
+@media(max-width:850px) { .chart-grid { grid-template-columns:minmax(0,1fr); } .chart-slot { height:200px; } }
+@media(max-width:700px) { .trends-main { padding:14px 13px 18px; } .trends-header { gap:16px; padding:16px; border-radius:22px; } .trends-title { min-width:0; } .trends-title-icon { width:48px; height:48px; border-radius:15px; } .trends-title p { font-size:12px; } .trend-controls { align-items:stretch; flex-direction:column; gap:12px; } .plant-control select { width:min(66vw,300px); } .period-buttons button { flex:1; padding-inline:8px; } }
+@media(max-width:700px) { .plant-control-image { width:48px; height:48px; } }
+@media(max-width:420px) { .trend-card { padding:14px 12px 12px; } .chart-heading h2 { font-size:16px; } .chart-slot { height:185px; } .stats { padding-inline:2px; } .stat span { font-size:9px; } .stat strong { font-size:14px; } }

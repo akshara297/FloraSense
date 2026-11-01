@@ -1,0 +1,283 @@
+*{box-sizing:border-box;}
+
+body{
+    min-width:320px;
+    margin:0;
+    color:#273329;
+    font-family:"Fredoka",sans-serif;
+}
+
+.login-page{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    min-height:100vh;
+    min-height:100svh;
+}
+
+.branding-panel{
+    position:relative;
+    display:grid;
+    place-items:center;
+    min-width:0;
+    min-height:100vh;
+    min-height:100svh;
+    overflow:hidden;
+    padding:36px;
+    background-color:#E3EEDB;
+    background-image:url("../assets/images/bg_login.png");
+    background-position:center 52%;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.branding-content{
+    position:relative;
+    z-index:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:min(100%,500px);
+    padding-bottom:clamp(120px,22vh,220px);
+    text-align:center;
+    color:#273329;
+}
+
+.brand-mark{
+    display:grid;
+    width:60px;
+    height:60px;
+    margin-bottom:12px;
+    place-items:center;
+    border-radius:50%;
+    background:rgba(255,248,232,.58);
+}
+
+.brand-mark svg{
+    width:42px;
+    height:42px;
+    fill:none;
+    stroke:#273329;
+    stroke-width:2.5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.branding-content h1{
+    margin:0;
+    color:#273329;
+    font-size:clamp(42px,5vw,66px);
+    line-height:1.08;
+    font-weight:700;
+    letter-spacing:-.04em;
+    text-shadow:0 1px 10px rgba(255,248,232,.55);
+}
+
+.branding-content p{
+    max-width:390px;
+    margin:14px 0 0;
+    color:#273329;
+    font-size:clamp(16px,1.7vw,20px);
+    line-height:1.5;
+    text-shadow:0 1px 10px rgba(255,248,232,.65);
+}
+
+.branding-content .brand-tagline{
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    font-size:clamp(12px,1.35vw,16px);
+    font-weight:600;
+}
+
+.brand-divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top:20px;
+    color:#445A3C;
+}
+
+.brand-divider::before,
+.brand-divider::after{
+    width:42px;
+    height:1px;
+    background:currentColor;
+    content:"";
+}
+
+.brand-divider svg{
+    width:26px;
+    height:26px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.branding-content .brand-note{
+    margin-top:12px;
+    color:#273329;
+    font-size:clamp(16px,1.8vw,22px);
+    font-family:"Edu QLD Hand","Fredoka",sans-serif;
+    font-weight:700;
+}
+
+.login-panel{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-width:0;
+    min-height:100vh;
+    min-height:100svh;
+    padding:clamp(24px,4vw,64px);
+    background:#273329;
+}
+
+.login-card-wrap{
+    position:relative;
+    z-index:1;
+    isolation:isolate;
+    width:min(100%,500px);
+}
+
+.login-card{
+    position:relative;
+    z-index:1;
+    width:min(100%,500px);
+    padding:clamp(28px,4vw,48px);
+    border-radius:30px;
+    background:#FFF8E8;
+    box-shadow:0 16px 40px rgba(0,0,0,.18);
+    color:#273329;
+    font-family:"Fredoka",sans-serif;
+}
+
+.login-card h2{
+    margin:4px 0 8px;
+    color:#273329;
+    font-family:"Edu QLD Hand","Fredoka",sans-serif;
+    font-size:clamp(27px,3vw,34px);
+    line-height:1.2;
+    text-align:center;
+}
+
+.login-card>p{
+    max-width:360px;
+    margin:0 auto 26px;
+    color:#445A3C;
+    font-size:16px;
+    line-height:1.45;
+    text-align:center;
+}
+
+.login-card form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+    color:#273329;
+    text-align:left;
+}
+
+.form-group input{
+    width:100%;
+    min-height:48px;
+    padding:10px 14px;
+    border:1px solid #C1D5A4;
+    border-radius:12px;
+    background:#FFFEFA;
+    color:#273329;
+    font:inherit;
+}
+
+.form-group input::placeholder{color:#687765;}
+
+.form-group input:focus-visible{
+    outline:3px solid rgba(104,145,94,.4);
+    outline-offset:2px;
+    border-color:#445A3C;
+}
+
+.remember-me{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#273329;
+    text-align:left;
+}
+
+.remember-me input{
+    width:17px;
+    height:17px;
+    accent-color:#445A3C;
+}
+
+.login-card button{
+    align-self:stretch;
+    min-height:52px;
+    margin-top:2px;
+    border:0;
+    border-radius:30px;
+    background:#445A3C;
+    box-shadow:0 7px 16px rgba(39,51,41,.16);
+    color:#FFF8E8;
+    font:600 17px "Fredoka",sans-serif;
+    cursor:pointer;
+}
+
+.login-card button:hover{background:#35482F;}
+
+.login-card button:focus-visible{
+    outline:3px solid #E9B95B;
+    outline-offset:3px;
+}
+
+.login-feedback{
+    position:relative;
+    z-index:1;
+    width:min(100%,500px);
+    min-height:1.4em;
+    margin:12px 0 0;
+    color:#FFF8E8;
+    font:500 13px "Fredoka",sans-serif;
+    text-align:center;
+}
+
+.login-feedback:not(:empty){
+    padding:9px 13px;
+    border:1px solid rgba(255,248,232,.25);
+    border-radius:12px;
+    background:#35482F;
+}
+
+.login-feedback.is-error{color:#FFD8C5;}
+
+@media(max-width:800px){
+    .login-page{grid-template-columns:minmax(0,1fr);}
+    .branding-panel{
+        min-height:390px;
+        padding:30px 20px 0;
+        background-position:center 48%;
+    }
+    .branding-content{padding-bottom:0;}
+    .branding-content h1{font-size:clamp(38px,8vw,54px);}
+    .branding-content p{margin-top:8px;font-size:16px;}
+    .branding-content .brand-tagline{font-size:12px;letter-spacing:.13em;}
+    .brand-divider{margin-top:12px;}
+    .branding-content .brand-note{margin-top:6px;font-size:17px;}
+    .login-panel{min-height:560px;padding:36px 20px 48px;}
+    .login-card{width:min(100%,500px);padding:clamp(28px,6vw,42px);}
+}
+
+@media(max-width:420px){
+    .branding-panel{min-height:350px;padding:24px 14px 0;}
+    .branding-content h1{font-size:38px;}
+    .login-panel{min-height:530px;padding:28px 14px 40px;}
+    .login-card{padding:26px 20px;border-radius:24px;}
+}

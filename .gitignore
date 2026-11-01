@@ -1,0 +1,25 @@
+# Python environment
+.venv/
+venv/
+**/.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local database
+backend/plant.db
+*.sqlite
+*.sqlite3
+
+# Secrets
+backend/.florasense_secret
+.env
+.env.*
+
+# Editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+Smart-Plant-Health-Monitoring-Arduino/secrets.h
